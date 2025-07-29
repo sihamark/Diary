@@ -51,7 +51,7 @@ fun App() {
                     item(
                         icon = { Icon(destination.icon(), contentDescription = null) },
                         label = { Text(stringResource(destination.title)) },
-                        selected = currentRootDestination == destination, // This should be managed by your navigation logic
+                        selected = currentRootDestination == destination,
                         onClick = { currentRootDestination = destination }
                     )
                 }
