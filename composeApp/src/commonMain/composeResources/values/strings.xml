@@ -1,0 +1,5 @@
+<resources>
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_example">Example</string>
+    <string name="nav_settings">Example</string>
+</resources>
