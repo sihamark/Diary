@@ -34,3 +34,4 @@ google-services.json
 *.hprof
 
 .kotlin
+/kotlin-js-store/wasm/yarn.lock
