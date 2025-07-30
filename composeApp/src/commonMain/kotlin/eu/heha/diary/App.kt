@@ -34,6 +34,7 @@ import diary.composeapp.generated.resources.compose_multiplatform
 import diary.composeapp.generated.resources.nav_dashboard
 import diary.composeapp.generated.resources.nav_example
 import diary.composeapp.generated.resources.nav_settings
+import eu.heha.diary.theme.DiaryTheme
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -41,8 +42,8 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 @Preview
-fun App() {
-    MaterialTheme {
+fun DiaryApp() {
+    DiaryTheme {
         var currentRootDestination by remember { mutableStateOf(RootNavigationDestination.Dashboard) }
         NavigationSuiteScaffold(
             layoutType = navigationLayoutType(currentWindowAdaptiveInfo()),
