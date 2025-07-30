@@ -9,10 +9,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CalendarMonth
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Button
+import androidx.compose.material3.DatePicker
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -21,6 +24,7 @@ import androidx.compose.material3.adaptive.WindowAdaptiveInfo
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffold
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteType
+import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -33,6 +37,7 @@ import androidx.window.core.layout.WindowHeightSizeClass
 import androidx.window.core.layout.WindowWidthSizeClass
 import diary.composeapp.generated.resources.Res
 import diary.composeapp.generated.resources.compose_multiplatform
+import diary.composeapp.generated.resources.nav_calendar
 import diary.composeapp.generated.resources.nav_dashboard
 import diary.composeapp.generated.resources.nav_example
 import diary.composeapp.generated.resources.nav_settings
@@ -63,8 +68,19 @@ fun DiaryApp() {
             when (currentRootDestination) {
                 RootNavigationDestination.Dashboard -> {}
                 RootNavigationDestination.Example -> Example()
+                RootNavigationDestination.Calendar -> Calendar()
                 RootNavigationDestination.Settings -> {}
             }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun Calendar() {
+    Scaffold { innerPadding ->
+        Column(Modifier.padding(innerPadding)) {
+            DatePicker(rememberDatePickerState())
         }
     }
 }
@@ -96,6 +112,10 @@ enum class RootNavigationDestination(
     Example(
         icon = { Icons.Filled.Person },
         title = Res.string.nav_example
+    ),
+    Calendar(
+        icon = { Icons.Filled.CalendarMonth },
+        title = Res.string.nav_calendar
     ),
     Settings(
         icon = { Icons.Filled.Settings },
